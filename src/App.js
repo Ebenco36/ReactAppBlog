@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Router, Switch, Route, Link } from "react-router-dom";
 
@@ -9,7 +9,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import BoardUser from "./components/BoardUser";
 import PostBlog from "./components/Post/PostBlog";
 import PostList from "./components/Post/PostList";
 
@@ -26,9 +25,6 @@ import { history } from "./helpers/history";
 import EventBus from "./common/EventBus";
 
 const App = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
-
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -66,7 +62,7 @@ const App = () => {
               </Link>
             </li>
 
-            {showModeratorBoard && (
+            {currentUser && (
               <li className="nav-item">
                 <Link to={"/postList"} className="nav-link">
                   Posts
@@ -74,18 +70,10 @@ const App = () => {
               </li>
             )}
 
-            {showAdminBoard && (
+            {currentUser && (
               <li className="nav-item">
                 <Link to={"/postBlog"} className="nav-link">
                   Add Post
-                </Link>
-              </li>
-            )}
-
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
                 </Link>
               </li>
             )}
@@ -131,7 +119,6 @@ const App = () => {
             <Route exact path="/postList" component={PostList} />
             <Route path="/postEdit/:slug" component={PostEdit} />
             <Route path="/postDetails/:slug" component={PostDetails} />
-            <Route path="/user" component={BoardUser} />
           </Switch>
         </div>
 

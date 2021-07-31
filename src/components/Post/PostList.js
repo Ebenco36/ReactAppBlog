@@ -1,7 +1,7 @@
 
 
-import React, { useState, useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { deletePost } from "../../actions/post";
 import postServices from "../../services/post.services";
@@ -9,8 +9,6 @@ import EventBus from "../../common/EventBus";
 import { Link } from "react-router-dom";
 
 const PostList = (props) => {
-  const form = useRef();
-
   useEffect(() => {
     postServices.posts().then(
         (response) => {
@@ -37,8 +35,8 @@ const PostList = (props) => {
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
-  const { message } = useSelector(state => state.message);
+  // const { isLoggedIn } = useSelector(state => state.auth);
+  // const { message } = useSelector(state => state.message);
 
   const dispatch = useDispatch();
 
@@ -59,10 +57,10 @@ const PostList = (props) => {
   };
 
 
-  return (<div > 
-            {content.map((post) => (
-        
-            <div class="blog-container" key={post.id} className={`post_`+post.id}>
+  return (
+      <div > 
+        {content.map((post) => (
+          <div class="blog-container" key={post.id} className={`post_`+post.id}>
   
                 <div class="blog-header">
                 <div class="blog-cover">
@@ -89,7 +87,15 @@ const PostList = (props) => {
                 </div>
                 <div class="blog-tags">
                     <ul>
-                    <li><a href="#">{post.slug}</a></li>
+                      <li>
+                        <Link
+                            to={"/postDetails/" + post.slug}
+                        >
+                        {post.slug}
+
+                        </Link>
+                      
+                      </li>
                     </ul>
                 </div>
                 </div>

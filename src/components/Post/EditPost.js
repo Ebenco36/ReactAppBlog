@@ -9,7 +9,7 @@ import Textarea from 'react-validation/build/textarea';
 import EventBus from "../../common/EventBus";
 import postServices from "../../services/post.services";
 import { postUpdate } from "../../actions/post";
-
+import { Redirect } from 'react-router-dom';
 const required = (value) => {
   if (!value) {
     return (
@@ -28,11 +28,10 @@ const EditPost = (props) => {
   const [publish, setPublish] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
+  // const { isLoggedIn } = useSelector(state => state.auth);
   const { message } = useSelector(state => state.message);
-
+  
   useEffect(() => {
-    //   console.log(props.match.params.id)
     postServices.post(props.match.params.slug).then(
         (response) => {
             console.log(response)

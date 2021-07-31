@@ -7,9 +7,8 @@ import { postComment } from "../../actions/post";
 import postServices from "../../services/post.services";
 import EventBus from "../../common/EventBus";
 import Form from "react-validation/build/form";
-import Input from 'react-validation/build/input';
-import Textarea from 'react-validation/build/textarea';
 import TextareaAutosize from 'react-textarea-autosize';
+
 const required = (value) => {
     if (!value) {
       return (
@@ -27,6 +26,8 @@ const PostComment = (props) => {
     const [comments, setComments] = useState([]);
     const [new_comment, setNewComment] = useState("");
     const [loading, setLoading] = useState(false);
+    const { isLoggedIn } = useSelector(state => state.auth);
+    // const { message } = useSelector(state => state.message);
 
 
     const onChangeComment = (e) => {
@@ -61,9 +62,7 @@ const PostComment = (props) => {
 
     const handlePostComment = (e) => {
         e.preventDefault();
-
         setLoading(true);
-
         form.current.validateAll();
         let comment = {
             comment: new_comment,
@@ -77,10 +76,6 @@ const PostComment = (props) => {
                 setLoading(false);
         });
     };
-
-    const { isLoggedIn } = useSelector(state => state.auth);
-    const { message } = useSelector(state => state.message);
-
     const dispatch = useDispatch();
 
     return (
@@ -107,7 +102,7 @@ const PostComment = (props) => {
                     <div class="row justify-content-center mb-4">
                         <div class="col-lg-8">
                             { comments.map((post) => (
-                            <div class="comments">
+                            <div class="comments" key={post.id}>
                                 <div class="comment d-flex mb-4">
                                     <div class="flex-shrink-0">
                                         <div class="avatar avatar-sm rounded-circle">

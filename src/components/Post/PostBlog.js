@@ -8,7 +8,6 @@ import Input from 'react-validation/build/input';
 import Textarea from 'react-validation/build/textarea';
 
 import { postBlog } from "../../actions/post";
-
 const required = (value) => {
   if (!value) {
     return (
@@ -27,9 +26,10 @@ const PostBlog = (props) => {
   const [publish, setPublish] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
+  // const { isLoggedIn } = useSelector(state => state.auth);
   const { message } = useSelector(state => state.message);
 
+  
   const dispatch = useDispatch();
 
   const onChangeTitle = (e) => {
