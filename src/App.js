@@ -10,8 +10,6 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
 import PostBlog from "./components/Post/PostBlog";
 import PostList from "./components/Post/PostList";
 
@@ -45,14 +43,6 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (currentUser) {
-      // setShowModeratorBoard(currentUser.roles.includes("ROLE_MODERATOR"));
-      // setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
-    } else {
-      setShowModeratorBoard(false);
-      setShowAdminBoard(false);
-    }
-
     EventBus.on("logout", () => {
       logOut();
     });
@@ -78,16 +68,16 @@ const App = () => {
 
             {showModeratorBoard && (
               <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
-                  Moderator Board
+                <Link to={"/postList"} className="nav-link">
+                  Posts
                 </Link>
               </li>
             )}
 
             {showAdminBoard && (
               <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
+                <Link to={"/postBlog"} className="nav-link">
+                  Add Post
                 </Link>
               </li>
             )}
@@ -142,8 +132,6 @@ const App = () => {
             <Route path="/postEdit/:slug" component={PostEdit} />
             <Route path="/postDetails/:slug" component={PostDetails} />
             <Route path="/user" component={BoardUser} />
-            <Route path="/mod" component={BoardModerator} />
-            <Route path="/admin" component={BoardAdmin} />
           </Switch>
         </div>
 

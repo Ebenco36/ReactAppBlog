@@ -70,8 +70,8 @@ const PostComment = (props) => {
         }
         dispatch(postComment(comment, props.match.params.slug, 'post'))
         .then((res) => {
-                console.log(res)
-                window.location.reload();
+            console.log(res)
+            window.location.reload();
         })
         .catch(() => {
                 setLoading(false);
