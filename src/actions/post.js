@@ -9,13 +9,9 @@
     export const postBlog = (postObj) => (dispatch) => {
       return PostService.postBlog(postObj).then(
         (response) => {
-          dispatch({
+          return dispatch({
               type: POST_SUCCESS,
               payload: response,
-          });
-          dispatch({
-            type: SET_MESSAGE,
-            payload: response.data.message,
           });
     
           return Promise.resolve();
@@ -49,13 +45,9 @@
       return PostService.postComment(comment, slug, model).then(
         (response) => {
           // console.log(response)
-          dispatch({
+          return dispatch({
               type: POST_SUCCESS,
               payload: response
-          });
-          dispatch({
-            type: SET_MESSAGE,
-            payload: response.data.message,
           });
     
           return Promise.resolve(response);
@@ -129,9 +121,6 @@
           return dispatch({
               type: POST_SUCCESS,
               payload: response
-          }).dispatch({
-            type: SET_MESSAGE,
-            payload: response.data.message,
           });
     
           return Promise.resolve();
@@ -163,14 +152,10 @@
     export const deletePost = (slug) => (dispatch) => {
       return PostService.deletePost(slug).then(
         (response) => {
-          dispatch({
+          return dispatch({
               type: POST_SUCCESS,
               payload: response
-          });
-          dispatch({
-            type: SET_MESSAGE,
-            payload: response.data.message,
-          });
+          })
     
           return Promise.resolve();
         },
