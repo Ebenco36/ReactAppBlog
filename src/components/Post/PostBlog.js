@@ -59,8 +59,8 @@
           publish: publish
       }
       dispatch(postBlog(postObj)).then((res) => {
-              console.log(res)
-          //   props.history.push("/profile");
+            console.log(res)
+            props.history.push("/home");
           //   window.location.reload();
       })
       .catch(() => {
