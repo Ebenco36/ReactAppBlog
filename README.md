@@ -1,40 +1,13 @@
-## React Redux Login, Logout, Registration example using Hooks
+## React Redux Login, Logout, Registration
 
-For more detail, please visit:
-> [React Redux Login, Logout, Registration example with Hooks](https://bezkoder.com/react-hooks-redux-login-registration-example/)
+### follow the steps to install packages required for application
+<p> Set the repo URL</p>
 
-> [React Hooks: JWT Authentication & Authorization (without Redux) example](https://bezkoder.com/react-hooks-jwt-auth/)
+> git pull origin main
 
-> [React Redux Login, Logout, Registration example (using React Components)](https://bezkoder.com/react-redux-jwt-auth/)
+> npm install
 
-Fullstack (JWT Authentication & Authorization example):
-> [React + Spring Boot](https://bezkoder.com/spring-boot-react-jwt-auth/)
 
-> [React + Node.js Express](https://bezkoder.com/react-express-authentication-jwt/)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### Set port
-.env
-```
-PORT=8081
-```
-
-### Note:
-Open `src/services/auth-header.js` and modify `return` statement for appropriate back-end (found in the tutorial).
-
-```js
-export default function authHeader() {
-  const user = JSON.parse(localStorage.getItem('user'));
-
-  if (user && user.accessToken) {
-    // return { Authorization: 'Bearer ' + user.accessToken }; // for Spring Boot back-end
-    return { 'x-access-token': user.accessToken };             // for Node.js Express back-end
-  } else {
-    return {};
-  }
-}
-```
 
 ### Project setup
 
