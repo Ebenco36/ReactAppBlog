@@ -1,11 +1,11 @@
-import axios from "axios";
+  import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8003/api/";
+  const API_URL = "http://127.0.0.1:8003/api/";
 
-const getPublicContent = () => {
-  return axios.get(API_URL + "posts/");
-};
+  const getPublicContent = () => {
+    return axios.get(API_URL + "posts/");
+  };
 
-export default {
-  getPublicContent
-};
+  export default {
+    getPublicContent
+  };
