@@ -80,41 +80,41 @@
 
         return (
 
-                <div class="d-flex align-items-center justify-content-center vh-10">
-                    <div class="container">
+                <div className="d-flex align-items-center justify-content-center vh-10">
+                    <div className="container">
                         
-                        <div class="row justify-content-center mb-4">
-                            <div class="col-lg-8">
+                        <div className="row justify-content-center mb-4">
+                            <div className="col-lg-8">
 
-                                <img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" class="img-responsive" alt="Cinque Terre" width="100%" height="400"/>
+                                <img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" className="img-responsive" alt="Cinque Terre" width="100%" height="400"/>
 
-                                <div class="comment-body mt-4" dangerouslySetInnerHTML={{
+                                <div className="comment-body mt-4" dangerouslySetInnerHTML={{
                                     __html: comment
                                 }}>
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center mb-4">
-                            <div class="col-lg-8">
+                        <div className="row justify-content-center mb-4">
+                            <div className="col-lg-8">
                                 <h5> {comments.length} Comment{comments.length > 1 ? 's' : ''} </h5>
                             </div>
                         </div>
-                        <div class="row justify-content-center mb-4">
-                            <div class="col-lg-8">
+                        <div className="row justify-content-center mb-4">
+                            <div className="col-lg-8">
                                 { comments.map((post) => (
-                                <div class="comments" key={post.id}>
-                                    <div class="comment d-flex mb-4">
-                                        <div class="flex-shrink-0">
-                                            <div class="avatar avatar-sm rounded-circle">
-                                                <img class="avatar-img" src="https://uifaces.co/our-content/donated/AW-rdWlG.jpg" alt=""/>
+                                <div className="comments" key={post.id}>
+                                    <div className="comment d-flex mb-4">
+                                        <div className="flex-shrink-0">
+                                            <div className="avatar avatar-sm rounded-circle">
+                                                <img className="avatar-img" src="https://uifaces.co/our-content/donated/AW-rdWlG.jpg" alt=""/>
                                             </div>
                                         </div>
-                                        <div class="flex-grow-1 ms-2 ms-sm-3">
-                                            <div class="comment-meta d-flex align-items-baseline">
-                                                <h6 class="me-2">{post.user.email}</h6>
-                                                <span class="text-muted">2d</span>
+                                        <div className="flex-grow-1 ms-2 ms-sm-3">
+                                            <div className="comment-meta d-flex align-items-baseline">
+                                                <h6 className="me-2">{post.user.email}</h6>
+                                                <span className="text-muted">2d</span>
                                             </div>
-                                            <div class="comment-body" dangerouslySetInnerHTML={{
+                                            <div className="comment-body" dangerouslySetInnerHTML={{
                                                 __html: post.content
                                             }}>
                                             </div>
@@ -124,15 +124,15 @@
                                 </div>
 
                                 ))}
-                                <div class="col-lg-8">
-                                    <div class="comment-form d-flex align-items-center">
-                                        <div class="flex-shrink-0">
-                                            <div class="avatar avatar-sm rounded-circle">
-                                            <img class="avatar-img" src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&crop=faces&fit=crop&h=200&w=200" alt=""/>
+                                <div className="col-lg-8">
+                                    <div className="comment-form d-flex align-items-center">
+                                        <div className="flex-shrink-0">
+                                            <div className="avatar avatar-sm rounded-circle">
+                                            <img className="avatar-img" src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&crop=faces&fit=crop&h=200&w=200" alt=""/>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 flex-grow-1 ms-2 ms-sm-3">
-                                            <small class="textout">{new_comment}</small>
+                                        <div className="col-md-12 flex-grow-1 ms-2 ms-sm-3">
+                                            <small className="textout">{new_comment}</small>
                                             <Form onSubmit={handlePostComment} ref={form}>
                                                 
                                                 <TextareaAutosize

@@ -60,18 +60,18 @@
     return (
         <div > 
           {content.map((post) => (
-            <div class="blog-container" key={post.id} className={`post_`+post.id}>
+            <div className="blog-container" key={post.id} className={`post_`+post.id}>
     
-                  <div class="blog-header">
-                  <div class="blog-cover">
-                      <div class="blog-author">
+                  <div className="blog-header">
+                  <div className="blog-cover">
+                      <div className="blog-author">
                       <h3>{post.title}</h3>
                       </div>
                   </div>
                   </div>
               
-                  <div class="blog-body">
-                  <div class="blog-title">
+                  <div className="blog-body">
+                  <div className="blog-title">
                       <h1>
                       <Link
                           to={"/postDetails/" + post.slug}
@@ -80,12 +80,12 @@
                       </Link>
                       </h1>
                   </div>
-                  <div class="blog-summary">
+                  <div className="blog-summary">
                       <p>
                       {post.content}    
                       </p>
                   </div>
-                  <div class="blog-tags">
+                  <div className="blog-tags">
                       <ul>
                         <li>
                           <Link
@@ -100,11 +100,11 @@
                   </div>
                   </div>
                   
-                  <div class="blog-footer">
+                  <div className="blog-footer">
                   <ul>
-                      <li class="published-date">2 days ago</li>
-                      <li class="comments"><a href="#"><span class="numero">4</span></a></li>
-                      <li class="shares"><a href="#"><span class="numero">1</span></a></li>
+                      <li className="published-date">2 days ago</li>
+                      <li className="comments"><a href="#"><span className="numero">4</span></a></li>
+                      <li className="shares"><a href="#"><span className="numero">1</span></a></li>
                   </ul>
                   </div>
                   <Link
@@ -114,7 +114,7 @@
                   Edit
                 </Link>
 
-                <button class="badge badge-warning" onClick={handleDetetePost(post.slug)}
+                <button className="badge badge-warning" onClick={handleDetetePost(post.slug)}
                   >
                   Delete
                 </button>

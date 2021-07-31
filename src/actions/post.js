@@ -126,11 +126,10 @@
     export const postUpdate = (obj, slug) => (dispatch) => {
       return PostService.postUpdate(obj, slug).then(
         (response) => {
-          dispatch({
+          return dispatch({
               type: POST_SUCCESS,
               payload: response
-          });
-          dispatch({
+          }).dispatch({
             type: SET_MESSAGE,
             payload: response.data.message,
           });
