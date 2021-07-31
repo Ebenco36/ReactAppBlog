@@ -1,5 +1,5 @@
       import React, { useState, useEffect } from "react";
-      import { useDispatch } from "react-redux";
+      import { useDispatch, useSelector } from "react-redux";
       import UserService from "../services/user.service";
       import { Link } from "react-router-dom";
       import { deletePost } from "../actions/post";
@@ -12,7 +12,7 @@
         const [loading, setLoading] = useState(false);
         const [next, setNext] = useState("");
         const [previous, setPrevious] = useState("");
-
+        const { user: currentUser } = useSelector((state) => state.auth);
         useEffect(() => {
           UserService.getPublicContent().then(
             (response) => {
@@ -40,7 +40,7 @@
           setLoading(true);
 
           dispatch(deletePost(slug)).then((res) => {
-                  console.log(res)
+              console.log(res)
               //   props.history.push("/profile");
               //   window.location.reload();
           })
@@ -110,17 +110,22 @@
                           <li className="shares"><a href="#"><span className="numero">1</span></a></li>
                       </ul>
                       </div>
-                      <Link
-                          to={"/postEdit/" + post.slug}
-                          className="badge badge-warning"
-                      >
-                      Edit
-                    </Link>
 
-                    <button className="badge badge-warning" onClick={handleDetetePost(post.slug)}
-                      >
-                      Delete
-                    </button>
+                      {currentUser && (
+                        <div>
+                          <Link
+                              to={"/postEdit/" + post.slug}
+                              className="badge badge-warning"
+                          >
+                          Edit
+                        </Link>
+
+                        <button className="badge badge-warning" onClick={handleDetetePost(post.slug)}
+                          >
+                          Delete
+                        </button>
+                      </div>
+                      )}
                   </div>
               ))}
               </div>
