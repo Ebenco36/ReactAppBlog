@@ -49,6 +49,10 @@
           });
         };
 
+        const dateConvert = (date) =>{
+          let d = new Date(date);
+          return d;
+        } 
 
         return (
           <div className="ms">
@@ -101,7 +105,7 @@
                       
                       <div className="blog-footer">
                       <ul>
-                          <li className="published-date">2 days ago</li>
+                          <li className="published-date">{dateConvert(post.publish).toDateString()}</li>
                           <li className="comments"><a href="#"><span className="numero">4</span></a></li>
                           <li className="shares"><a href="#"><span className="numero">1</span></a></li>
                       </ul>
