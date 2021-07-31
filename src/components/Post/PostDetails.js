@@ -28,7 +28,8 @@
         const [loading, setLoading] = useState(false);
         const { isLoggedIn } = useSelector(state => state.auth);
         // const { message } = useSelector(state => state.message);
-
+        const { user: currentUser } = useSelector((state) => state.auth);
+        
 
         const onChangeComment = (e) => {
             const new_comment = e.target.value;
@@ -124,7 +125,9 @@
                                 </div>
 
                                 ))}
-                                <div className="col-lg-8">
+
+                                {currentUser && (
+                                    <div className="col-lg-8">
                                     <div className="comment-form d-flex align-items-center">
                                         <div className="flex-shrink-0">
                                             <div className="avatar avatar-sm rounded-circle">
@@ -156,6 +159,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                )}
+                            
                             </div>
                         </div>
                     </div>
